@@ -1,0 +1,294 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --ink: #15202b;
+  --muted: #607080;
+  --line: #d9e1e8;
+  --accent: #087f5b;
+  --accent-dark: #075f47;
+  --warn: #b45309;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+button.secondary {
+  background: #1f2937;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.hero {
+  min-height: 46vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 14px;
+  font-size: clamp(44px, 7vw, 78px);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.lead {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.status-panel,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.status-panel {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+}
+
+.status-panel div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.status-panel div:last-child {
+  border-bottom: 0;
+}
+
+.status-panel span {
+  color: var(--muted);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.workspace.lower {
+  align-items: start;
+}
+
+.panel {
+  padding: 20px;
+  box-shadow: 0 16px 36px rgba(21, 32, 43, 0.06);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+  color: #2f3d4a;
+  font-weight: 750;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 11px 12px;
+  background: #fff;
+  color: var(--ink);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #e8f6f1;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.badge.warning {
+  background: #fff4df;
+  color: var(--warn);
+}
+
+.badge.danger {
+  background: #fff0ee;
+  color: var(--danger);
+}
+
+.brief-output {
+  min-height: 420px;
+}
+
+.brief-output h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.brief-output section {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.brief-output section:first-child {
+  padding-top: 0;
+}
+
+.brief-output section:last-child {
+  border-bottom: 0;
+}
+
+.brief-output ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.brief-output li {
+  margin: 6px 0;
+}
+
+.result-box {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px;
+  background: #f9fafb;
+  min-height: 70px;
+}
+
+.result-box strong {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+  margin-bottom: 16px;
+}
+
+.checklist label {
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  margin: 0;
+  font-weight: 700;
+}
+
+.checklist input {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 880px) {
+  .shell {
+    width: min(100% - 24px, 680px);
+    padding-top: 18px;
+  }
+
+  .hero,
+  .workspace,
+  .field-grid,
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+}

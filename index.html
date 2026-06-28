@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RiskPilot BTC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AI risk cockpit for Bitcoin traders</p>
+        <h1>RiskPilot BTC</h1>
+        <p class="lead">Generate a daily BTC risk brief, calculate max position size, and review trade discipline without turning the app into a signal service.</p>
+        <div class="hero-actions">
+          <button id="loadDemo" type="button">Load Demo</button>
+          <button id="exportReport" class="secondary" type="button">Export Markdown</button>
+        </div>
+      </div>
+
+      <div class="status-panel">
+        <div>
+          <span>Mode</span>
+          <strong>Risk management</strong>
+        </div>
+        <div>
+          <span>Advice boundary</span>
+          <strong>No signals</strong>
+        </div>
+        <div>
+          <span>Output</span>
+          <strong>Daily brief + sizing</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <form id="riskForm" class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Market context</p>
+            <h2>Daily Risk Brief</h2>
+          </div>
+          <select id="language" aria-label="Output language">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+
+        <div class="field-grid">
+          <label>BTC price
+            <input id="price" type="number" min="1" step="1" value="59918">
+          </label>
+          <label>24h high
+            <input id="high24" type="number" min="1" step="1" value="61000">
+          </label>
+          <label>24h low
+            <input id="low24" type="number" min="1" step="1" value="58800">
+          </label>
+          <label>Support
+            <input id="support" type="number" min="1" step="1" value="58800">
+          </label>
+          <label>Resistance
+            <input id="resistance" type="number" min="1" step="1" value="61000">
+          </label>
+          <label>Funding
+            <select id="funding">
+              <option>Neutral</option>
+              <option>Elevated long bias</option>
+              <option>Elevated short bias</option>
+              <option>Compressed</option>
+            </select>
+          </label>
+        </div>
+
+        <label>News and macro context
+          <textarea id="news" rows="4">Watch whether BTC can reclaim 60,000. If the bounce is weak and price loses 58,800 again, reduce risk before looking for a new setup.</textarea>
+        </label>
+
+        <button type="submit">Generate Brief</button>
+      </form>
+
+      <section class="panel output-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Generated output</p>
+            <h2>Risk Brief</h2>
+          </div>
+          <span id="riskBadge" class="badge">Ready</span>
+        </div>
+        <article id="briefOutput" class="brief-output"></article>
+      </section>
+    </section>
+
+    <section class="workspace lower">
+      <form id="positionForm" class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Position sizing</p>
+            <h2>Max Loss First</h2>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <label>Account equity
+            <input id="equity" type="number" min="1" step="1" value="5000">
+          </label>
+          <label>Max risk %
+            <input id="riskPercent" type="number" min="0.1" step="0.1" value="1">
+          </label>
+          <label>Entry price
+            <input id="entry" type="number" min="1" step="1" value="60000">
+          </label>
+          <label>Stop price
+            <input id="stop" type="number" min="1" step="1" value="58800">
+          </label>
+        </div>
+
+        <button type="submit">Calculate Position</button>
+        <div id="positionOutput" class="result-box"></div>
+      </form>
+
+      <form id="journalForm" class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Trade journal</p>
+            <h2>Discipline Review</h2>
+          </div>
+        </div>
+
+        <label>Trade plan
+          <textarea id="tradePlan" rows="3">Wait for reclaim above 60,000, enter only after retest, stop below 58,800.</textarea>
+        </label>
+        <div class="checklist">
+          <label><input id="hadPlan" type="checkbox" checked> Had a written plan</label>
+          <label><input id="hadStop" type="checkbox" checked> Defined stop before entry</label>
+          <label><input id="respectedSize" type="checkbox"> Respected max position size</label>
+          <label><input id="avoidedChase" type="checkbox"> Avoided chasing first breakout candle</label>
+        </div>
+
+        <button type="submit">Score Discipline</button>
+        <div id="journalOutput" class="result-box"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
